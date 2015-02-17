@@ -5,7 +5,6 @@ I am using a Keyes sound sensor.
 
 int DO = 2 ; //digital
 int DA = A0; //analog
-int threshold = 532;
 int sensorvalue = 0;
 int redPin = 9;         
 int greenPin = 10;

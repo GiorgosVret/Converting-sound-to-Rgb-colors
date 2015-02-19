@@ -1,42 +1,46 @@
-int DO = 2 ; //digital 
-int DA = A0; //analog 
-int sensorvalue = 0; 
+//int DO = 2; You do not use any Do variable somewhere
+int micInput = A0;
+//int DA = A0; //analog //Neither any DA
+int sensorValue; //You do not need to initialize the variable. 
 int redPin = 9;
 int greenPin = 10; 
 int bluePin = 11;
 
 void setup() {
+  
   pinMode(redPin, OUTPUT);
   pinMode(greenPin, OUTPUT);
   pinMode(bluePin, OUTPUT);
 
-  analogWrite(redPin, 255);
-  analogWrite(greenPin, 255);
-  analogWrite(bluePin, 255);
+  // analogWrite(redPin, 255); You don't need any analogs for RGB, inside setup
+  // analogWrite(greenPin, 255);
+  // analogWrite(bluePin, 255);
 }
 
 void loop() {
 
-MicValue = analogRead(MicPin);
+  sensorvalue = analogRead(micInput);
 
-if (sensorvalue > 530) {
-  analogWrite(bluePin,0);
-  delay(15);
+  if (sensorvalue > 530) {
+    setColor(0,0,255); //blue
+    delay(15);
+  }
+
+  if (sensorvalue > 540) {
+    setColor(0,255,0);
+    delay(60);
+  }
+
+  if (sensorvalue > 550) {
+    setColor(255,0,0);
+    delay(140);
+  }
+
 }
 
-if (sensorvalue > 540) {
-  analogWrite(bluePin,255);
-  analogWrite(greenPin, 0);
-  delay(60);
-}
-
-if (sensorvalue > 550) {
-  analogWrite(greenPin,255);
-  analogWrite(redPin, 0);
-  delay(140);
-}
-
-  analogWrite(greenPin, 255);
-  analogWrite(redPin, 255); analogWrite(bluePin,255);
-
+//create a color setting function in order to avoid to much code
+void setColor(int redValue, int greenValue, int blueValue) {
+  analogWrite(redPin, redValue);
+  analogWrite(greenPin, greenValue);
+  analogWrite(bluePin, blueValue); 
 }

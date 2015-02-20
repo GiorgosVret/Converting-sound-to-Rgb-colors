@@ -19,19 +19,19 @@ void setup() {
 
 void loop() {
 
-  sensorvalue = analogRead(micInput);
+  sensorValue = analogRead(micInput);
 
-  if (sensorvalue > 530) {
+  if (sensorValue > 530) {
     setColor(0,0,255); //blue
     delay(15);
   }
 
-  if (sensorvalue > 540) {
+  if (sensorValue > 540) {
     setColor(0,255,0);
     delay(60);
   }
 
-  if (sensorvalue > 550) {
+  if (sensorValue > 550) {
     setColor(255,0,0);
     delay(140);
   }
